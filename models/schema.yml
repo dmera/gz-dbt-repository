@@ -9,6 +9,9 @@ sources:
       - name: sales
         identifier: raw_gz_sales
         description: sales table, one row per products_id found in each orders_id
+        tests:
+          - unique:
+              column_name: "(orders_id || '-' || pdt_id)"
         columns:
           - name: date_date
             description: date of purchase
@@ -16,11 +19,6 @@ sources:
             description: possible primary key
           - name: product_id
             description: ids of products
-          - name: key
-            description: orders_id + product_id as key
-            tests:
-              - unique
-              - not_null
           - name: revenue
             description: revenue per sale
           - name: quantity
