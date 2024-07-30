@@ -1,0 +1,52 @@
+
+version: 2
+
+sources:
+  - name: raw
+    schema: gz_raw_data
+    tables:
+      - name: sales
+        identifier: raw_gz_sales
+        description: sales table
+        columns:
+          - name: date_date
+            description: date of sale
+          - name: orders_id
+            description: possible primary key
+
+      - name: product
+        identifier: raw_gz_product
+        description: product table
+        columns:
+          - name: products_id
+            description: id of product
+      - name: ship
+        identifier: raw_gz_ship
+        description: shipping table
+        columns:
+          - name: orders_id
+            description: possible foreign kew for date_date
+          - name: ship_cost
+            description: cost of shipping
+
+
+
+
+models:
+    - name: my_first_dbt_model
+      description: "A starter dbt model"
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+
+    - name: my_second_dbt_model
+      description: "A starter dbt model"
+      columns:
+          - name: id
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
