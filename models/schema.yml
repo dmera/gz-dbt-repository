@@ -14,11 +14,13 @@ sources:
             description: date of purchase
           - name: orders_id
             description: possible primary key
+          - name: product_id
+            description: ids of products
+          - name: key
+            description: orders_id + product_id as key
             tests:
               - unique
               - not_null
-          - name: product_id
-            description: ids of products
           - name: revenue
             description: revenue per sale
           - name: quantity
@@ -51,6 +53,4 @@ sources:
             description: logistic costs
           - name: ship_cost
             description: cost of shipping
-
-
 
