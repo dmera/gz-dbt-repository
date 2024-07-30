@@ -13,7 +13,9 @@ from {{ ref('stg_raw__ship') }}
 
 select
 orders_id,
---date_date,
+date_date,
+revenue_total,
+margin,
 round(cast(margin as FLOAT64) + cast(shipping_fee as FLOAT64) - cast(log_cost as FLOAT64) - cast(ship_cost as FLOAT64),2) as operational_margin
 from orders_margin_int
 join ship
