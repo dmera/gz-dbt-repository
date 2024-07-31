@@ -22,3 +22,7 @@ group by date_date
 {##
 comment in Jinja
 ##}
+
+{##
+comment in Jinja
+##}
