@@ -1,3 +1,4 @@
+
 with
 orders_op_int as
 (
@@ -14,3 +15,10 @@ round(sum(margin),2) as margin,
 round(sum(operational_margin),2) as operational_margin
 from orders_op_int
 group by date_date
+
+
+
+
+{##
+comment in Jinja
+##}

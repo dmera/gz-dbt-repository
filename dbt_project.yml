@@ -40,3 +40,11 @@ models:
     # Applies to all files under models/example/
     example:
       +materialized: table
+    mart:
+      materialized: table
+      finance:
+        # a folder inside 'mart' from which i want to make an independent 
+        schema: finance
+      purchase:
+        # another as 'finance'
+        schema: purchase
