@@ -1,4 +1,3 @@
-
 version: 2
 
 sources:
@@ -51,4 +50,150 @@ sources:
             description: logistic costs
           - name: ship_cost
             description: cost of shipping
+
+      - name: adwords
+        identifier: raw_gz_adwords
+        description: adwords table
+        tests:
+          - unique:
+              column_name: "(date_date || '-' || campaign_key)"
+        columns:
+          - name: date_date
+            description:  date_date
+            tests:
+              - not_null                  
+          - name: paid_surce
+            description: paid_surce
+          - name: campaign_key
+            description: campaign_key
+            tests:
+              - not_null               
+          - name: camPGN_name
+            description: campaign_name
+          - name: ads_cost
+            description: ads_cost
+          - name: impressions
+            description: impressions
+          - name: click
+            description: click
+
+      - name: bing
+        identifier: raw_gz_bing
+        description: bing table
+        tests:
+          - unique:
+              column_name: "(date_date || '-' || campaign_key)"
+        columns:
+          - name: date_date
+            description:  date_date
+            tests:
+              - not_null                  
+          - name: paid_surce
+            description: paid_surce
+          - name: campaign_key
+            description: campaign_key
+            tests:
+              - not_null
+          - name: camPGN_name
+            description: campaign_name
+          - name: ads_cost
+            description: ads_cost
+          - name: impressions
+            description: impressions
+          - name: click
+            description: click
+
+      - name: criteo
+        identifier: raw_gz_criteo
+        description: criteo table
+        tests:
+          - unique:
+              column_name: "(date_date || '-' || campaign_key)"
+        columns:
+          - name: date_date
+            description:  date_date
+            tests:
+              - not_null                  
+          - name: paid_surce
+            description: paid_surce
+          - name: campaign_key
+            description: campaign_key
+            tests:
+              - not_null
+          - name: camPGN_name
+            description: campaign_name
+          - name: ads_cost
+            description: ads_cost
+          - name: impressions
+            description: impressions
+          - name: click
+            description: click
+
+      - name: facebook
+        identifier: raw_gz_facebook
+        description: facebook table
+        tests:
+          - unique:
+              column_name: "(date_date || '-' || campaign_key)"
+        columns:
+          - name: date_date
+            description:  date_date
+            tests:
+              - not_null                  
+          - name: paid_surce
+            description: paid_surce
+          - name: campaign_key
+            description: campaign_key
+            tests:
+              - not_null
+          - name: camPGN_name
+            description: campaign_name
+          - name: ads_cost
+            description: ads_cost
+          - name: impressions
+            description: impressions
+          - name: click
+            description: click
+
+models:
+
+        - name: int_campaigns
+          identifier: int_campaings.sql
+          columns:
+            - name: date_date
+            - name: paid_source
+            - name: campaign_key
+            - name: campaign_name
+            - name: ads_cost
+            - name: impression
+            - name: click
+          tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns:
+              - date_date
+              - campaign_key
+
+        - name: int_campaigns_day
+          identifier: int_campaings_day.sql
+          columns:
+            - name: date_date
+              tests:
+                - unique
+                - not_null                    
+            - name: ads_cost
+            - name: ads_impression
+            - name: ads_clicks
+
+        - name: finance_campaigns_day
+          columns:
+            - name: date_date
+              tests:
+                - unique
+                - not_null                    
+            - name: ads_margin
+            - name: average_basket
+            - name: operational_margin
+            - name: ads_cost
+
+
 
